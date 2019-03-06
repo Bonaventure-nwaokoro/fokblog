@@ -14,6 +14,11 @@
             {% if object.image %}
               <p <img src="{{ object.image.url }}" class='img-responsive'/>{{ object.image }}</p>
             {% endif %}
+            {% if post.comments.count > 1 %}
+              <a href="{% url 'post-detail' pk=post.pk %}">{{ post.comments.count }}  Comments</a>
+              {% else %}
+              <a href="{% url 'post-detail' pk=post.pk %}">{{ post.comments.count }}  Comment</a>
+            {% endif %}
           </div>
         </article>
     {% endfor %}
